@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class CraftingManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Item[] CraftItems;
+    //приветb
+    public void CraftItem()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckCrafts()
     {
-        
+        for(int i = 0; i < CraftItems.Length; i++)
+        {
+            // CraftItems[i]; ;
+            if (true)
+            {
+                //CraftItems button.Interactable;
+            }
+        }
     }
+   
 }

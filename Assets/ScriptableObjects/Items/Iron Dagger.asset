@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 901800aa7ae3c094fa59aa026d436515, type: 3}
+  m_Name: Iron Dagger
+  m_EditorClassIdentifier: 
+  Name: Iron Dagger
+  Attack: 0
+  CriticalChance: 0
+  CriticalMultiplier: 0
+  Defense: 0
+  Dexterity: 0
+  Luck: 0
+  Rarity: F
+  Ingredients: []
+  Bases: []

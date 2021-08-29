@@ -8,6 +8,7 @@ public class CaseManager : MonoBehaviour
     public bool OpeningCase = false;
     public float ScrollingSpeed = -20;
     private float velocity;
+
     public void OpenCaseMenu()
     {
         CaseMenu.SetActive(true);

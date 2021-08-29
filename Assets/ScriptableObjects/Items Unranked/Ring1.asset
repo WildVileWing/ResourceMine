@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b124387faca094eb87421252abd9f1, type: 3}
+  m_Name: Ring1
+  m_EditorClassIdentifier: 
+  Name: Ring of Evasion
+  Icon: {fileID: 21300000, guid: 66be859ecda0e61438f624954cc01857, type: 3}
+  Type: 0
+  Rarity: 10
+  equipmentType: 0
+  StrengthModifier: 5
+  DefenseModifier: 0
+  DexterityModifier: 20
+  LuckModifier: 0
+  CriticalChance: 15
+  CriticalMultiplier: 25
+  mainAttribute: 1
+  mainAttributeAmount: 25
+  Ability: 0
+  AbilityDescription: 
+  Passive: 0
+  PassiveDescription: 

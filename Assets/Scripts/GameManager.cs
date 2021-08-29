@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
         if (RandomResource < chance) 
         {
             int RandomResourceItem = UnityEngine.Random.Range(0, 10);
-            Debug.Log("Random.Range(0, 10) " + Math.Round(UnityEngine.Random.Range(0f, 1f), 3));
             DataManager.Instance.ResourceArray[RandomResourceItem] += amount;
         }
     }
