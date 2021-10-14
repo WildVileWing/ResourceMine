@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class NotificationManager : MonoBehaviour
 {
     public Sprite[] RarityImageArray = new Sprite[14];
-    public Button RarityNotificationButton;
+    public GameObject RarityNotificationButton;
     public Image NotificationImage;
+
     #region Singleton
     public static NotificationManager Instance;
     private void Awake()
@@ -19,17 +20,16 @@ public class NotificationManager : MonoBehaviour
 
     public void ShowRarityNotification(Item item)
     {
-        Debug.Log("Sprite " + item.Rarity);
+        Debug.Log("Opening RarityNotification");
         NotificationImage.sprite = RarityImageArray[(int)item.Rarity];
         NotificationImage.enabled = true;
-        RarityNotificationButton.interactable = true;
-        Debug.Log("Item Rarity " + (int)item.Rarity);
+        RarityNotificationButton.SetActive(true);
     }
 
     public void CloseRarityNotification()
     {
+        Debug.Log("Closing RarityNotification");
         NotificationImage.enabled = false;
-        RarityNotificationButton.interactable = false;
-
+        RarityNotificationButton.SetActive(true);
     }
 }

@@ -2172,7 +2172,7 @@ MonoBehaviour:
         m_MethodName: AddItem
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 586e04c82a1046046a9bb0836b755e46,
+          m_ObjectArgument: {fileID: 11400000, guid: 3ee48261be4b81a428b0134981643f56,
             type: 2}
           m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
           m_IntArgument: 0
@@ -7620,7 +7620,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 896151462}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -7653,7 +7653,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1655890341}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -12243,6 +12243,7 @@ GameObject:
   - component: {fileID: 1530894700}
   - component: {fileID: 1530894695}
   - component: {fileID: 1530894701}
+  - component: {fileID: 1530894702}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12309,6 +12310,7 @@ MonoBehaviour:
   - {fileID: 732265659}
   - {fileID: 1185648171}
   - {fileID: 783985910}
+  - {fileID: 1985997116}
   CraftingMenu: {fileID: 1185648171}
   InventoryMenu: {fileID: 1016471698}
   ShopMenu: {fileID: 732265659}
@@ -12424,6 +12426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b40043444872a47a62920a23f608d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TemporaryItem: {fileID: 0}
 --- !u!114 &1530894701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12451,8 +12454,46 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ff16897c90adb74408eaf8744d3d1ca0, type: 3}
   - {fileID: 21300000, guid: eb6975f1f88acfc45bde7f4882d027bc, type: 3}
   - {fileID: 21300000, guid: 8512e6c2814ba5e459de51aaaa940ebb, type: 3}
-  RarityNotificationButton: {fileID: 0}
+  RarityNotificationButton: {fileID: 896151462}
   NotificationImage: {fileID: 1655890341}
+--- !u!114 &1530894702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530894691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56370ded45c5dd848adb12d867ebb155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  ItemAmount: {fileID: 0}
+  Icon: {fileID: 0}
+  InformationButton: {fileID: 0}
+  InformationArray:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  InformationTextArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1540753088
 GameObject:
   m_ObjectHideFlags: 0
@@ -12873,7 +12914,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1530894700}
         m_TargetAssemblyTypeName: InformationMenuManager, Assembly-CSharp
-        m_MethodName: OpenInformationMenu
+        m_MethodName: EquipItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15335,8 +15376,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.12902832, y: 0.0075683594}
-  m_SizeDelta: {x: 0, y: -319.58}
+  m_AnchoredPosition: {x: -0.12902832, y: 0.36828613}
+  m_SizeDelta: {x: 0, y: -318.85986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1848587493
 BoxCollider2D:
@@ -15362,7 +15403,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 800, y: 1324.0001}
+  m_Size: {x: 800, y: 1325.14}
   m_EdgeRadius: 0
 --- !u!114 &1848587494
 MonoBehaviour:
@@ -16247,7 +16288,7 @@ PrefabInstance:
     - target: {fileID: 8987265230896743546, guid: cade317f74aa2124ba65d01a1791e2ba,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: UseItem
+      value: OpenIMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cade317f74aa2124ba65d01a1791e2ba, type: 3}
@@ -18549,6 +18590,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1016471699}
     m_Modifications:
+    - target: {fileID: 180900631699112764, guid: cade317f74aa2124ba65d01a1791e2ba,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2166712116495832469, guid: cade317f74aa2124ba65d01a1791e2ba,
         type: 3}
       propertyPath: m_Interactable
@@ -18794,6 +18840,11 @@ PrefabInstance:
       propertyPath: InformationTextArray.Array.data[9]
       value: 
       objectReference: {fileID: 867345973}
+    - target: {fileID: 8987265230896743546, guid: cade317f74aa2124ba65d01a1791e2ba,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1010055401}
     - target: {fileID: 8987265230896743546, guid: cade317f74aa2124ba65d01a1791e2ba,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

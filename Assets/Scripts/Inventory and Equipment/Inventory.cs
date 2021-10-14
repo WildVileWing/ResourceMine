@@ -27,32 +27,64 @@ public class Inventory : MonoBehaviour
 
     public List<Item> items = new List<Item>();
     
-    public int InventorySlots = 28;
+    public int InventorySlots = 44;
 
     public void AddItem(Item item)
     {
-        if (items.Count >= InventorySlots)
+        if (item.GetType().BaseType.Name == "Equipment")
         {
-            Debug.Log("Not enough space");
-            return;
+            if(items.Count >= InventorySlots)
+            {
+                Debug.Log("Not enough space");
+                return;
+            }
+            else
+            {
+                items.Add(item);
+            }
         }
-        items.Add(item);
+        else
+        {
+            if (ItemSearch(item) != null)
+            {
+                item.StackAmount++;
+            }
+            else
+            {
+                items.Add(item);
+            }
+        }
         if (onItemChangedCallBack != null)
         {
             onItemChangedCallBack.Invoke();
         }
-       
     }
 
     public void RemoveItem(Item item)
     {
-        items.Remove(item);
-        if(onItemChangedCallBack != null)
+        if(item.StackAmount > 1)
+        {
+            item.StackAmount--;
+        }
+        else
+        {
+            items.Remove(item);
+        }
+        if (onItemChangedCallBack != null)
         {
             onItemChangedCallBack.Invoke();
         }
     }
 
-
-
+    public Item ItemSearch(Item item)
+    {
+        for(int i = 0; i < items.Count; i++)
+        {
+            if(items[i] == item)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
 }

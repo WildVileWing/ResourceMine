@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType
-{
-    Consumable,
-    Equipment,
-    Ingredient
-}
 
 public enum ItemRarity
 {
@@ -31,9 +25,11 @@ public enum ItemRarity
 [CreateAssetMenu(fileName = "Item", menuName = "Scriptable Object/Item")]
 public class Item : ScriptableObject
 {
+
     public string Name;
     public Sprite Icon;
-    public ItemType Type;
+    [HideInInspector]
+    public int StackAmount;
     public ItemRarity Rarity;
     public virtual void Use()
     {

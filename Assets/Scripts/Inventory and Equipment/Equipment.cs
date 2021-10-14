@@ -40,7 +40,8 @@ public enum PassiveAbilities
 
 public class Equipment : Item
 {
-
+    [HideInInspector]
+    private new const int StackAmount = 1;
     public EquipmentType equipmentType;
 
     public int StrengthModifier;
@@ -77,8 +78,9 @@ public class Equipment : Item
             case PassiveAbilities.ResourceAmount:
                 this.PassiveDescription = "Resource Amount + 100%";
                 break;
+        
             default:
-                this.PassiveDescription = "";
+                this.PassiveDescription = null;
                 break;
         }
         switch (this.Ability)

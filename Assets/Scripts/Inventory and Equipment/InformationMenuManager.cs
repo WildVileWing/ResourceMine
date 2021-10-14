@@ -5,10 +5,28 @@ using UnityEngine.UI;
 
 public class InformationMenuManager : MonoBehaviour
 {
-    public void EquipItem()
-    {
-        Debug.Log("InformationMenu " + InventorySlot.Instanse.item);
+    public Item TemporaryItem;
 
+    #region Singleton
+    public static InformationMenuManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    #endregion
+
+    public void EquipItem() 
+    {
+        if(TemporaryItem != null)
+        {
+            TemporaryItem.Use();
+            Debug.Log("Equiping from" + this.GetType());
+        }
+        else
+        {
+            Debug.Log("Item is null");
+        }
     }
     public void OpenInformationMenu()
     {

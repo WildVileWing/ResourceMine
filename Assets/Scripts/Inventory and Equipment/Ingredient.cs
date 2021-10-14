@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Ingredient", menuName = "Scriptable Object/Ingredient")]
-public class Ingredient : ScriptableObject
+public enum ItemType
 {
+    Ingredient,
+    Part
+}
 
-    public int Count;
-
-    [Tooltip("F  \nE  \nD  \nC  \nB  \nA  \nS  \nSS  \nSSS  \nUT  \nAR  \nAT  \nMH  \n???  \nT")]
-    public string Rarity;
-
+[CreateAssetMenu(fileName = "Ingredient", menuName = "Scriptable Object/Ingredient")]
+public class Ingredient : Item
+{
     public int Price;
 
 

@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     public Item item;
-
+    public Text ItemAmount;
     public Image Icon;
     public Button InformationButton;
     public string[] InformationArray = new string[10];
     public Text[] InformationTextArray = new Text[10];
+
     public static InventorySlot Instanse;
     private void Awake()
     {
@@ -20,6 +21,14 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(Item newItem)
     {
         item = newItem;
+        if(item.GetType().BaseType.Name == "Equipment" ) //     || item.GetType().BaseType.Name == "Parts"
+        {
+            ItemAmount.text = null;
+        }
+        else
+        {
+            ItemAmount.text = item.StackAmount.ToString();
+        }
         Icon.sprite = item.Icon;
         Icon.enabled = true;
         InformationButton.interactable = true;
@@ -28,24 +37,20 @@ public class InventorySlot : MonoBehaviour
     public void ClearSlot()
     {
         item = null;
+        ItemAmount.text = null;
         Icon.sprite = null;
         Icon.enabled = false;
         InformationButton.interactable = false;
     }
-    public void OpenIMenu()
+    public void OpenInformationMenu()
     {
-        OpenInformationMenu(item, InformationArray, InformationTextArray);
-    }
-
-    public void OpenInformationMenu(Item item, string[] InfoArray, Text[] InfoTextArray)
-    {
-        Debug.Log("OpenInformationMenu " + item);
-        InfoArray = item.GetInformation();
-        for (int i = 0; i < InfoArray.Length; i++)
+        InformationArray = item.GetInformation();
+        for (int i = 0; i < InformationArray.Length; i++)
         {
-            InfoTextArray[i].text = $"{InfoArray[i]}";
+            InformationTextArray[i].text = $"{InformationArray[i]}";
         }
         TextManager.Instance.InformationMenu.SetActive(true);
+        InformationMenuManager.Instance.TemporaryItem = item;
     }
     public void CloseInformationMenu()
     {
