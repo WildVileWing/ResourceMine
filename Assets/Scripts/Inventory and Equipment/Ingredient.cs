@@ -12,6 +12,4 @@ public enum ItemType
 public class Ingredient : Item
 {
     public int Price;
-
-
 }

@@ -23,8 +23,11 @@ public class PlayerStatus : ScriptableObject
     public int Dexterity;
     public int Luck;
 
-
     public int CriticalChance;
     public int CriticalMultiplier;
+
+    public int ResourceChance;
+    public int ResourceAmount;
+    public int ResourceTier;
 
 }

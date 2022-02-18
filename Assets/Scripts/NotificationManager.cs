@@ -20,7 +20,6 @@ public class NotificationManager : MonoBehaviour
 
     public void ShowRarityNotification(Item item)
     {
-        Debug.Log("Opening RarityNotification");
         NotificationImage.sprite = RarityImageArray[(int)item.Rarity];
         NotificationImage.enabled = true;
         RarityNotificationButton.SetActive(true);
@@ -28,7 +27,6 @@ public class NotificationManager : MonoBehaviour
 
     public void CloseRarityNotification()
     {
-        Debug.Log("Closing RarityNotification");
         NotificationImage.enabled = false;
         RarityNotificationButton.SetActive(true);
     }

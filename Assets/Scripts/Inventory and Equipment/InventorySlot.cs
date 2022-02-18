@@ -21,7 +21,7 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(Item newItem)
     {
         item = newItem;
-        if(item.GetType().BaseType.Name == "Equipment" ) //     || item.GetType().BaseType.Name == "Parts"
+        if(item.GetType().BaseType.Name == "Equipment" )    //     || item.GetType().BaseType.Name == "Parts"
         {
             ItemAmount.text = null;
         }
@@ -68,14 +68,8 @@ public class InventorySlot : MonoBehaviour
         {
             NotificationManager.Instance.ShowRarityNotification(item);
             item.Use();
-        
-        }
-        
+        }  
     }
-
-
-
-
 }
 
 

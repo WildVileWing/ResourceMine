@@ -26,18 +26,21 @@ public class StatusManager : MonoBehaviour
     {
         if(oldItem != null)
         {
-            playerStatus.Strength           -= oldItem.StrengthModifier;
-            playerStatus.Defense            -= oldItem.DefenseModifier;
-            playerStatus.Dexterity          -= oldItem.DexterityModifier;
-            playerStatus.Luck               -= oldItem.LuckModifier;
-            playerStatus.CriticalChance     -= oldItem.CriticalChance;
-            playerStatus.CriticalMultiplier -= oldItem.CriticalMultiplier;
+            DataManager.Instance.Strength -= oldItem.StrengthModifier;
+            DataManager.Instance.Defense -= oldItem.DefenseModifier;
+            DataManager.Instance.Dexterity -= oldItem.DexterityModifier;
+            DataManager.Instance.Luck -= oldItem.LuckModifier;
+            DataManager.Instance.CriticalChance -= oldItem.CriticalChance;
+            DataManager.Instance.CriticalMultiplier -= oldItem.CriticalMultiplier;
         }
-        playerStatus.Strength            = playerStatus.BaseStrength           + playerStatus.Strength           + newItem.StrengthModifier;
-        playerStatus.Defense             = playerStatus.BaseDefense            + playerStatus.Defense            + newItem.DefenseModifier;
-        playerStatus.Dexterity           = playerStatus.BaseDexterity          + playerStatus.Dexterity          + newItem.DexterityModifier;
-        playerStatus.Luck                = playerStatus.BaseLuck               + playerStatus.Luck               + newItem.LuckModifier;
-        playerStatus.CriticalChance      = playerStatus.BaseCriticalChance     + playerStatus.CriticalChance     + newItem.CriticalChance;
-        playerStatus.CriticalMultiplier  = playerStatus.BaseCriticalMultiplier + playerStatus.CriticalMultiplier + newItem.CriticalMultiplier;
+        if(newItem != null)
+        {
+            DataManager.Instance.Strength += DataManager.Instance.BaseStrength + newItem.StrengthModifier;
+            DataManager.Instance.Defense += DataManager.Instance.BaseDefense + newItem.DefenseModifier;
+            DataManager.Instance.Dexterity += DataManager.Instance.BaseDexterity + newItem.DexterityModifier;
+            DataManager.Instance.Luck += DataManager.Instance.BaseLuck + newItem.LuckModifier;
+            DataManager.Instance.CriticalChance += DataManager.Instance.BaseCriticalChance + newItem.CriticalChance;
+            DataManager.Instance.CriticalMultiplier += DataManager.Instance.BaseCriticalMultiplier + newItem.CriticalMultiplier;
+        }
     }
 }

@@ -15,9 +15,8 @@ MonoBehaviour:
   Name: Ring of Horseshoe
   Icon: {fileID: 21300000, guid: 178ae692ff0c0d047ba76dc36e7cc3d0, type: 3}
   StackAmount: 1
-  Type: 0
   Rarity: 12
-  equipmentType: 0
+  equipmentType: 6
   StrengthModifier: 0
   DefenseModifier: 0
   DexterityModifier: 5

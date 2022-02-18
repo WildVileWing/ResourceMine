@@ -28,12 +28,11 @@ public class Item : ScriptableObject
 
     public string Name;
     public Sprite Icon;
-    [HideInInspector]
     public int StackAmount;
     public ItemRarity Rarity;
     public virtual void Use()
     {
-
+        Debug.Log(StackAmount);
     }
 
     public virtual string[] GetInformation()

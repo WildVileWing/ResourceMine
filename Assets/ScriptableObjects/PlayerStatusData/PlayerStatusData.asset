@@ -26,7 +26,10 @@ MonoBehaviour:
   BaseLuck: 0
   Strength: 10
   Defense: 0
-  Dexterity: 40
-  Luck: 0
-  CriticalChance: 30
-  CriticalMultiplier: 50
+  Dexterity: 45
+  Luck: 30
+  CriticalChance: 1
+  CriticalMultiplier: 1
+  ResourceChance: 1
+  ResourceAmount: 2
+  ResourceTier: 1

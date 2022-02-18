@@ -2,24 +2,90 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+
 public class DataManager : MonoBehaviour
 {
-    //Хранитель перемен
-
     public static DataManager Instance;
     public ulong Clicks;
+    public string PlayerName;
+    public int Level; 
+    public int MaxHealth;
+    public int MaxMana;
+    public int Health;
+    public int Mana;
+    public int BaseStrength;
+    public int BaseDefense;
+    public int BaseDexterity;
+    public int BaseLuck;
+    public int BaseCriticalChance;
+    public int BaseCriticalMultiplier;
+    public int Strength;
+    public int Defense;
+    public int Dexterity;
+    public int Luck;
+    public int ClickAmount;
+    public int CriticalChance;
+    public int CriticalMultiplier;
+    public int ResourceChance;
+    public int ResourceAmount;
+    public int ResourceTier;
+    public ulong ClickPrice;
+    public ulong CriticalMultiplierPrice;
+    public ulong CriticalChancePrice;
+    public ulong ResourceChancePrice;
+    public ulong ResourceAmountPrice;
+    public ulong ResourceTierPrice;
+
     public ulong[] ResourceArray;
     private string DataPath;
+
     private void DataSave()
     {
-        Data data = new Data(Clicks);
+        Data data = new Data(Clicks, PlayerName, Level, MaxHealth, MaxMana, Health, Mana, BaseStrength, BaseDefense,
+            BaseDexterity, BaseLuck, BaseCriticalChance, BaseCriticalMultiplier, Strength, Defense, Dexterity, Luck,
+            CriticalChance, CriticalMultiplier, ResourceChance, ResourceAmount, ResourceTier, ClickAmount, ClickPrice, CriticalMultiplierPrice,
+            CriticalChancePrice, ResourceChancePrice, ResourceAmountPrice, ResourceTierPrice);
         File.WriteAllText(DataPath, JsonUtility.ToJson(data));
     }
-
+    
     private void DataLoad()
     {
         Data data = JsonUtility.FromJson<Data>(File.ReadAllText(DataPath));
         Clicks = data.clicks;
+        PlayerName = data.playerName;
+        Level = data.level;
+        MaxHealth = data.maxHealth;
+        MaxMana = data.maxMana;
+        Health = data.health;
+        Mana = data.mana;
+        BaseStrength = data.baseStrength;
+        BaseDefense = data.baseDefense;
+        BaseDexterity = data.baseDexterity;
+        BaseLuck = data.baseLuck;
+        BaseCriticalChance = data.baseCriticalChance;
+        BaseCriticalMultiplier = data.baseCriticalMultiplier;
+        Strength = data.strength;
+        Defense = data.defense;
+        Dexterity = data.dexterity;
+        Luck = data.luck;
+        //ClickAmount = data.clickAmount;
+        //if (ClickAmount < 1) ClickAmount = 1;
+
+        ClickAmount = data.clickAmount < 1 ? 1 : data.clickAmount;
+         
+        CriticalChance = data.criticalChance;
+        CriticalMultiplier = data.criticalMultiplier;
+        ResourceChance = data.resourceChance;
+        ResourceAmount = data.resourceAmount;
+        ResourceTier = data.resourceTier;
+        ClickPrice = data.clickPrice;
+        CriticalMultiplierPrice = data.criticalMultiplierPrice;
+        CriticalChancePrice = data.criticalChancePrice;
+        ResourceChancePrice = data.resourceChancePrice;
+        ResourceAmountPrice = data.resourceAmountPrice;
+        ResourceTierPrice = data.resourceTierPrice;
+
+
     }
 
     private void OnApplicationFocus(bool focus)
@@ -38,15 +104,77 @@ public class DataManager : MonoBehaviour
         DataPath = Application.persistentDataPath + "/Data.json";
         ResourceArray = new ulong[10];
         DataLoad();
+
     }
+
     [System.Serializable]
     public class Data 
     {
         public ulong clicks;
-        
-        public Data(ulong Clicks)
+        public string playerName;
+        public int level;
+        public int maxHealth;
+        public int maxMana;
+        public int health;
+        public int mana;
+        public int baseStrength;
+        public int baseDefense;
+        public int baseDexterity;
+        public int baseLuck;
+        public int baseCriticalChance;
+        public int baseCriticalMultiplier;
+        public int strength;
+        public int defense;
+        public int dexterity;
+        public int luck;
+        public int clickAmount;
+        public int criticalChance;
+        public int criticalMultiplier;
+        public int resourceChance;
+        public int resourceAmount;
+        public int resourceTier;
+        public ulong clickPrice;
+        public ulong criticalMultiplierPrice;
+        public ulong criticalChancePrice;
+        public ulong resourceChancePrice;
+        public ulong resourceAmountPrice;
+        public ulong resourceTierPrice;
+
+        public Data(ulong _clicks, string _playerName, int _level, int _maxHealth, int _maxMana, int _health, int _mana, int _baseStrength, int _baseDefense,
+            int _baseDexterity, int _baseLuck, int _baseCriticalChance, int _baseCriticalMultiplier, int _strength, int _defense, int _dexterity, int _luck,
+            int _criticalChance, int _criticalMultiplier, int _resourceChance, int _resourceAmount, int _resourceTier,
+            int _clickAmount, ulong _clickPrice, ulong _criticalMultiplierPrice, ulong _criticalChancePrice, ulong _resourceChancePrice,
+            ulong _resourceAmountPrice, ulong _resourceTierPrice)
         {
-            clicks = Clicks;
+            clicks = _clicks;
+            playerName = _playerName;
+            level = _level;
+            maxHealth = _maxHealth;
+            maxMana = _maxMana;
+            health = _health;
+            mana = _mana;
+            baseStrength = _baseStrength;
+            baseDefense = _baseDefense;
+            baseDexterity = _baseDexterity;
+            baseLuck = _baseLuck;
+            baseCriticalChance = _baseCriticalChance;
+            baseCriticalMultiplier = _baseCriticalMultiplier;
+            strength = _strength;
+            defense = _defense;
+            dexterity = _dexterity;
+            luck = _luck;
+            clickAmount = _clickAmount;
+            criticalChance = _criticalChance;
+            criticalMultiplier = _criticalMultiplier;
+            resourceChance = _resourceChance;
+            resourceAmount = _resourceAmount;
+            resourceTier = _resourceTier;
+            clickPrice = _clickPrice;
+            criticalMultiplierPrice = _criticalMultiplierPrice;
+            criticalChancePrice = _criticalChancePrice;
+            resourceChancePrice = _resourceChancePrice;
+            resourceAmountPrice = _resourceAmountPrice;
+            resourceTierPrice = _resourceTierPrice;
         }
     }
 }

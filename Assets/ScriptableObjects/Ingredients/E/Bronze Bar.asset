@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Bronze Bar
   m_EditorClassIdentifier: 
   Name: Bronze Bar
-  Count: 1
-  Rarity: E
+  Icon: {fileID: 0}
+  StackAmount: 6
+  Rarity: 0
   Price: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour
 {
-    public Transform itemsParent; //rename
+    public Transform itemsParent;
     Inventory inventory;
 
     InventorySlot[] slots;

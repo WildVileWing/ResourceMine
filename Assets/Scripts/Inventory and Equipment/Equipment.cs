@@ -216,11 +216,12 @@ public class Equipment : Item
             Equipment oldItem = EquipmentManager.Instanse.CurrentEquipment[slotIndex];
             Inventory.Instance.AddItem(oldItem);
             EquipmentManager.Instanse.CurrentEquipment[slotIndex] = null;
+            //StatusManager.Instance.UpdateCharacterStatus(null, oldItem);
         }
     }
 
     public override void Use()
-    {
+    {   
         base.Use();
         Equip(this);
         Inventory.Instance.RemoveItem(this);

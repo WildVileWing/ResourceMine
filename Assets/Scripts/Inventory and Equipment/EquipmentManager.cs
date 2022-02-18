@@ -36,7 +36,9 @@ public class EquipmentManager : MonoBehaviour
             Equipment oldItem = CurrentEquipment[slotIndex];
             Inventory.Instance.AddItem(oldItem);
 
+            StatusManager.Instance.UpdateCharacterStatus(null, oldItem);
             CurrentEquipment[slotIndex] = null;
+
         }
         TextManager.Instance.UpdatePlayerStatusMenu();
 

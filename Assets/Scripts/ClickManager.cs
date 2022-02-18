@@ -5,31 +5,33 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour
 {
-    public double ClickAmount = 1;
     public double ClickPerClick;
 
-    public static ClickManager Instanse;
+
+    public static ClickManager Instance;
     private void Awake()
     {
-        Instanse = this;
+        Instance = this;
     }
 
     private void OnMouseDown()
     {
         int randomNumber = UnityEngine.Random.Range(0, 101);
-        if(randomNumber < StatusManager.Instance.playerStatus.CriticalChance)
+        if(randomNumber < DataManager.Instance.CriticalChance)
         {
-            ClickPerClick = ClickAmount + ClickAmount * (StatusManager.Instance.playerStatus.CriticalMultiplier * 0.01);
+            ClickPerClick = DataManager.Instance.ClickAmount + DataManager.Instance.ClickAmount * 
+                (DataManager.Instance.CriticalMultiplier * 0.01);
         }
         else
         {
-            ClickPerClick = ClickAmount;
+            ClickPerClick = DataManager.Instance.ClickAmount;
         }
-
+        Debug.Log(ClickPerClick);
         ClickPerClick = Math.Round(ClickPerClick);
+        Debug.Log(ClickPerClick);
         DataManager.Instance.Clicks += (ulong)ClickPerClick;
-
-
+        
+        
         GameManager.Instanse.RandomDropChance(10, 1);
         TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
     }

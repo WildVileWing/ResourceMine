@@ -11,29 +11,19 @@ public class CraftingManager : MonoBehaviour
     public Image ItemIcon;
     public Text ItemName;
 
-    public void CraftItem(params Item[] items)
+    public void CraftItem(Item result, params Item[] craftingMaterials)
     {
-        if(Inventory.Instance.items.Count >= Inventory.Instance.InventorySlots)
+        if (!Inventory.Instance.IsInventoryFull())
         {
-            Debug.Log("Not enough space");
-            return;
-
+            for(int i = 0; i < craftingMaterials.Length; i++)
+            {
+                Inventory.Instance.RemoveItem(Inventory.Instance.ItemSearch(craftingMaterials[i]));
+                Debug.Log("Item: " + craftingMaterials[i].Name + ", Amount = " + craftingMaterials[i].StackAmount);
+            }
         }
-        for (int i = 0; i < items.Length; i++)
+        else
         {
-            if (true)
-            {
-
-            }
-            Inventory.Instance.RemoveItem(items[i]);
-            if (Inventory.Instance.ItemSearch(items[i]))
-            {
-
-            }
-            else
-            {
-
-            }
+            Debug.Log("Inventory is full, delete some items");
         }
 
     }

@@ -87,4 +87,16 @@ public class Inventory : MonoBehaviour
         }
         return null;
     }
+
+    public bool IsInventoryFull()
+    {
+        if((items.Count + 1) > InventorySlots)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
