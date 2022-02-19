@@ -33,10 +33,10 @@ public class DataManager : MonoBehaviour
     public ulong CriticalMultiplierPrice;
     public ulong CriticalChancePrice;
     public ulong ResourceChancePrice;
-    public ulong ResourceAmountPrice;
+    public ulong ResourcePrice;
     public ulong ResourceTierPrice;
 
-    public ulong[] ResourceArray;
+    public int[] ResourceArray;
     private string DataPath;
 
     private void DataSave()
@@ -44,7 +44,7 @@ public class DataManager : MonoBehaviour
         Data data = new Data(Clicks, PlayerName, Level, MaxHealth, MaxMana, Health, Mana, BaseStrength, BaseDefense,
             BaseDexterity, BaseLuck, BaseCriticalChance, BaseCriticalMultiplier, Strength, Defense, Dexterity, Luck,
             CriticalChance, CriticalMultiplier, ResourceChance, ResourceAmount, ResourceTier, ClickAmount, ClickPrice, CriticalMultiplierPrice,
-            CriticalChancePrice, ResourceChancePrice, ResourceAmountPrice, ResourceTierPrice);
+            CriticalChancePrice, ResourceChancePrice, ResourcePrice, ResourceTierPrice);
         File.WriteAllText(DataPath, JsonUtility.ToJson(data));
     }
     
@@ -82,7 +82,7 @@ public class DataManager : MonoBehaviour
         CriticalMultiplierPrice = data.criticalMultiplierPrice;
         CriticalChancePrice = data.criticalChancePrice;
         ResourceChancePrice = data.resourceChancePrice;
-        ResourceAmountPrice = data.resourceAmountPrice;
+        ResourcePrice = data.resourcePrice;
         ResourceTierPrice = data.resourceTierPrice;
 
 
@@ -137,14 +137,14 @@ public class DataManager : MonoBehaviour
         public ulong criticalMultiplierPrice;
         public ulong criticalChancePrice;
         public ulong resourceChancePrice;
-        public ulong resourceAmountPrice;
+        public ulong resourcePrice;
         public ulong resourceTierPrice;
 
         public Data(ulong _clicks, string _playerName, int _level, int _maxHealth, int _maxMana, int _health, int _mana, int _baseStrength, int _baseDefense,
             int _baseDexterity, int _baseLuck, int _baseCriticalChance, int _baseCriticalMultiplier, int _strength, int _defense, int _dexterity, int _luck,
             int _criticalChance, int _criticalMultiplier, int _resourceChance, int _resourceAmount, int _resourceTier,
             int _clickAmount, ulong _clickPrice, ulong _criticalMultiplierPrice, ulong _criticalChancePrice, ulong _resourceChancePrice,
-            ulong _resourceAmountPrice, ulong _resourceTierPrice)
+            ulong _resourcePrice, ulong _resourceTierPrice)
         {
             clicks = _clicks;
             playerName = _playerName;
@@ -173,7 +173,7 @@ public class DataManager : MonoBehaviour
             criticalMultiplierPrice = _criticalMultiplierPrice;
             criticalChancePrice = _criticalChancePrice;
             resourceChancePrice = _resourceChancePrice;
-            resourceAmountPrice = _resourceAmountPrice;
+            resourcePrice = _resourcePrice;
             resourceTierPrice = _resourceTierPrice;
         }
     }

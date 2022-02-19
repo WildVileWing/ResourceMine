@@ -32,7 +32,7 @@ public class ClickManager : MonoBehaviour
         DataManager.Instance.Clicks += (ulong)ClickPerClick;
         
         
-        GameManager.Instanse.RandomDropChance(10, 1);
+        GameManager.Instanse.RandomDropChance(DataManager.Instance.ResourceChance, DataManager.Instance.ResourceAmount);
         TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
     }
 

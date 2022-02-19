@@ -38,7 +38,7 @@ public class ShopManager : MonoBehaviour
         ListOfButtonsPriceText[1].text = DataManager.Instance.CriticalMultiplierPrice + "$";
         ListOfButtonsPriceText[2].text = DataManager.Instance.CriticalChancePrice + "$";
         ListOfButtonsPriceText[3].text = DataManager.Instance.ResourceChancePrice + "$";
-        ListOfButtonsPriceText[4].text = DataManager.Instance.ResourceAmountPrice + "$";
+        ListOfButtonsPriceText[4].text = DataManager.Instance.ResourcePrice + "$";
         ListOfButtonsPriceText[5].text = DataManager.Instance.ResourceTierPrice + "$";
     }
     #endregion
@@ -60,7 +60,7 @@ public class ShopManager : MonoBehaviour
             DataManager.Instance.Clicks -= DataManager.Instance.ClickPrice;
             DataManager.Instance.ClickPrice = (ulong)Mathf.Ceil(DataManager.Instance.ClickPrice * 1.4f);
             DataManager.Instance.ClickAmount += 1;
-            
+           
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
             ListOfButtonsPriceText[0].text = DataManager.Instance.ClickPrice + "$";
         }
@@ -73,7 +73,6 @@ public class ShopManager : MonoBehaviour
             DataManager.Instance.Clicks -= DataManager.Instance.CriticalMultiplierPrice;
             DataManager.Instance.CriticalMultiplierPrice = (ulong)Mathf.Ceil(DataManager.Instance.CriticalMultiplierPrice * 1.8f);
             DataManager.Instance.CriticalMultiplier += 1;
-
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
             ListOfButtonsPriceText[1].text = DataManager.Instance.CriticalMultiplierPrice + "$";
         }
@@ -86,7 +85,6 @@ public class ShopManager : MonoBehaviour
             DataManager.Instance.Clicks -= DataManager.Instance.CriticalChancePrice;
             DataManager.Instance.CriticalChancePrice = (ulong)Mathf.Ceil(DataManager.Instance.CriticalChancePrice * 1.5f);
             DataManager.Instance.CriticalChance += 1;
-
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
             ListOfButtonsPriceText[2].text = DataManager.Instance.CriticalChancePrice + "$";
         }
@@ -98,7 +96,6 @@ public class ShopManager : MonoBehaviour
             DataManager.Instance.Clicks -= DataManager.Instance.ResourceChancePrice;
             DataManager.Instance.ResourceChancePrice = (ulong)(DataManager.Instance.ResourceChancePrice * 2);
             DataManager.Instance.ResourceChance += 1;
-
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
             ListOfButtonsPriceText[3].text = DataManager.Instance.ResourceChancePrice + "$";
         }
@@ -106,14 +103,13 @@ public class ShopManager : MonoBehaviour
 
     public void BuyResourceAmount()
     {
-        if (DataManager.Instance.Clicks > DataManager.Instance.ResourceAmountPrice)
+        if (DataManager.Instance.Clicks > DataManager.Instance.ResourcePrice)
         {
             DataManager.Instance.Clicks -= ResourceAmountPrice;
-            DataManager.Instance.ResourceAmountPrice = (ulong)Mathf.Ceil(DataManager.Instance.ResourceAmountPrice * 2.5f);
+            DataManager.Instance.ResourcePrice = (ulong)Mathf.Ceil(DataManager.Instance.ResourcePrice * 2.5f);
             DataManager.Instance.ResourceAmount += 1;
-
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
-            ListOfButtonsPriceText[4].text = DataManager.Instance.ResourceAmountPrice + "$";
+            ListOfButtonsPriceText[4].text = DataManager.Instance.ResourcePrice + "$";
         }
     }
 
@@ -124,8 +120,6 @@ public class ShopManager : MonoBehaviour
             DataManager.Instance.Clicks -= DataManager.Instance.ResourceTierPrice;
             DataManager.Instance.ResourceTierPrice = (ulong)(DataManager.Instance.ResourceTierPrice * 10);
             DataManager.Instance.ResourceAmount += 1;
-            
-
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
             ListOfButtonsPriceText[5].text = DataManager.Instance.ResourceTierPrice + "$";
         }
@@ -155,25 +149,5 @@ public class ShopManager : MonoBehaviour
             DescriptionText.color = Color.red;
         }
         ShowDescriptionOnTouch(5);
-        /*
-        Vector3 descriptionText = new Vector3(DescriptionObject.transform.position.x, DescriptionObject.transform.position.y,
-                                              DescriptionObject.transform.position.z);
-
-        bool outOfBounds = !Screen.safeArea.Contains(descriptionText);
-
-        DescriptionText.color = outOfBounds ? Color.red : Color.white;        
-        */
-
-
-        /* //Камера на основе которой будем определять вышел ли объект за ее границы
-        Vector3 point = cam.WorldToViewportPoint(transform.position); //Записываем положение объекта к границам камеры, X и Y это будут как раз верхние и нижние границы камеры
-        if (point.y < 0f || point.y > 1f || point.x > 1f || point.x < 0f)
-        { //Если объект вышел за одну из этих границ, тут именно 0 и 1 это границы камеры. Но можно выйти и за эти значения, если указать например -0.2f
-          //нужный код
-            Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(point + new Vector3(0, 500, 0));
-        }
-        */
     }
-
-
 }
