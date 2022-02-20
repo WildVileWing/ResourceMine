@@ -6,7 +6,7 @@ using System.IO;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
-    public ulong Clicks;
+    public ulong Clicks = 1000;
     public string PlayerName;
     public int Level; 
     public int MaxHealth;
@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
     public int Defense;
     public int Dexterity;
     public int Luck;
-    public int ClickAmount;
+    public int ClickAmount = 1;
     public int CriticalChance;
     public int CriticalMultiplier;
     public int ResourceChance;
@@ -36,7 +36,7 @@ public class DataManager : MonoBehaviour
     public ulong ResourcePrice;
     public ulong ResourceTierPrice;
 
-    public int[] ResourceArray;
+    public int[,] ResourceArray;
     private string DataPath;
 
     private void DataSave()
@@ -102,7 +102,7 @@ public class DataManager : MonoBehaviour
     {
         Instance = this;
         DataPath = Application.persistentDataPath + "/Data.json";
-        ResourceArray = new ulong[10];
+        ResourceArray = new int[3, 10];
         DataLoad();
 
     }

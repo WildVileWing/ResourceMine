@@ -30,10 +30,11 @@ public class ClickManager : MonoBehaviour
         ClickPerClick = Math.Round(ClickPerClick);
         Debug.Log(ClickPerClick);
         DataManager.Instance.Clicks += (ulong)ClickPerClick;
-        
-        
-        GameManager.Instanse.RandomDropChance(DataManager.Instance.ResourceChance, DataManager.Instance.ResourceAmount);
         TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
+
+        //Resource part
+        GameManager.Instanse.RandomDropChance(DataManager.Instance.ResourceTier, DataManager.Instance.ResourceChance, DataManager.Instance.ResourceAmount);
+        
     }
 
 }

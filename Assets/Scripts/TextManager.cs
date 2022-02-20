@@ -60,7 +60,7 @@ public class TextManager : MonoBehaviour
     { 
         for(int i = 0; i < ResourceMenuArray.Length; i++)
         {
-            ResourceMenuArray[i].text = $"{DataManager.Instance.ResourceArray[i]}"; 
+            ResourceMenuArray[i].text = $"{DataManager.Instance.ResourceArray[1,i]}"; 
         }
     }
     public void UpdatePlayerStatusMenu()
