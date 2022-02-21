@@ -68,11 +68,7 @@ public class DataManager : MonoBehaviour
         Defense = data.defense;
         Dexterity = data.dexterity;
         Luck = data.luck;
-        //ClickAmount = data.clickAmount;
-        //if (ClickAmount < 1) ClickAmount = 1;
-
         ClickAmount = data.clickAmount < 1 ? 1 : data.clickAmount;
-         
         CriticalChance = data.criticalChance;
         CriticalMultiplier = data.criticalMultiplier;
         ResourceChance = data.resourceChance;
@@ -84,8 +80,6 @@ public class DataManager : MonoBehaviour
         ResourceChancePrice = data.resourceChancePrice;
         ResourcePrice = data.resourcePrice;
         ResourceTierPrice = data.resourceTierPrice;
-
-
     }
 
     private void OnApplicationFocus(bool focus)
@@ -104,7 +98,6 @@ public class DataManager : MonoBehaviour
         DataPath = Application.persistentDataPath + "/Data.json";
         ResourceArray = new int[3, 10];
         DataLoad();
-
     }
 
     [System.Serializable]

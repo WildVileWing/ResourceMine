@@ -26,9 +26,7 @@ public class ClickManager : MonoBehaviour
         {
             ClickPerClick = DataManager.Instance.ClickAmount;
         }
-        Debug.Log(ClickPerClick);
         ClickPerClick = Math.Round(ClickPerClick);
-        Debug.Log(ClickPerClick);
         DataManager.Instance.Clicks += (ulong)ClickPerClick;
         TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
 

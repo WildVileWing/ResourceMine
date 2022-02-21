@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
         if (RandomResourceChance < chance) 
         {
             int RandomResourceItem = UnityEngine.Random.Range(0, 10);
-
             DataManager.Instance.ResourceArray[RandomTier, RandomResourceItem] += amount;
         }
     }
@@ -22,6 +21,5 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instanse = this;
-       
     }   
 }

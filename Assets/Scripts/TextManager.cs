@@ -21,7 +21,6 @@ public class TextManager : MonoBehaviour
     public GameObject RarityButton;
     public Image RarityImage;
 
-    // private variables
     double avarageClick;
 
     #region Singleton
@@ -85,6 +84,8 @@ public class TextManager : MonoBehaviour
         PlayerStatusArray[4].text = Math.Round(avarageClick, 2).ToString();
         PlayerStatusArray[5].text = $"{DataManager.Instance.CriticalChance}%";
         PlayerStatusArray[6].text = $"{DataManager.Instance.CriticalMultiplier}%";
+        PlayerStatusArray[7].text = (DataManager.Instance.Strength + DataManager.Instance.Defense + DataManager.Instance.Dexterity +
+            DataManager.Instance.Luck).ToString();
     }
     public void OpenResourcesMenu()
     {
