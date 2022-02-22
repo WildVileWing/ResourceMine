@@ -11,6 +11,7 @@ public class ShopManager : MonoBehaviour
     public RectTransform Bounds;
     public GameObject ShopPanel;
     public BoxCollider2D ClickPanelCollider;
+    public Transform ShopPanelTransform;
     public ulong BaseClickPrice;
     public ulong BaseCriticalMultiplierPrice;
     public ulong BaseCriticalChancePrice;
@@ -33,7 +34,7 @@ public class ShopManager : MonoBehaviour
 
     private void Awake()
     {
-        
+
         ListOfButtonsPriceText[0].text = DataManager.Instance.ClickPrice + "$";
         ListOfButtonsPriceText[1].text = DataManager.Instance.CriticalMultiplierPrice + "$";
         ListOfButtonsPriceText[2].text = DataManager.Instance.CriticalChancePrice + "$";
@@ -44,23 +45,23 @@ public class ShopManager : MonoBehaviour
     #endregion
 
     public void ShowDescriptionOnTouch(int id)
-    { 
-        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(240,-500,0));
+    {
+        Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(240, -500, 0));
         mouseWorldPosition.z = 0f;
         transform.position = mouseWorldPosition;
         DescriptionObject.transform.position = mouseWorldPosition;
         DescriptionText.text = ListOfDescription[id];
-        DescriptionObject.SetActive(!DescriptionObject.activeSelf);     
+        DescriptionObject.SetActive(!DescriptionObject.activeSelf);
     }
 
     public void BuyClicks()
     {
-        if(DataManager.Instance.Clicks > DataManager.Instance.ClickPrice)
+        if (DataManager.Instance.Clicks > DataManager.Instance.ClickPrice)
         {
             DataManager.Instance.Clicks -= DataManager.Instance.ClickPrice;
             DataManager.Instance.ClickPrice = (ulong)Mathf.Ceil(DataManager.Instance.ClickPrice * 1.4f);
             DataManager.Instance.ClickAmount += 1;
-           
+
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
             ListOfButtonsPriceText[0].text = DataManager.Instance.ClickPrice + "$";
         }
@@ -133,21 +134,5 @@ public class ShopManager : MonoBehaviour
     public void CloseDescription()
     {
         DescriptionObject.SetActive(false);
-    }
-
-    public void CheckOffPanel()
-    {
-        Vector3 descriptionObject = DescriptionObject.transform.position;
-        Debug.Log(descriptionObject); 
-        Debug.Log(ClickPanelCollider.bounds.Contains(descriptionObject));
-        if(ClickPanelCollider.bounds.Contains(descriptionObject))
-        {
-            DescriptionText.color = Color.green;
-        }
-        else
-        {
-            DescriptionText.color = Color.red;
-        }
-        ShowDescriptionOnTouch(5);
     }
 }
