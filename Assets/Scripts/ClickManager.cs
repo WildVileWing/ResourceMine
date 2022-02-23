@@ -7,7 +7,6 @@ public class ClickManager : MonoBehaviour
 {
     public double ClickPerClick;
 
-
     public static ClickManager Instance;
     private void Awake()
     {
@@ -30,7 +29,6 @@ public class ClickManager : MonoBehaviour
         DataManager.Instance.Clicks += (ulong)ClickPerClick;
         TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
 
-        //Resource part
         GameManager.Instanse.RandomDropChance(DataManager.Instance.ResourceTier, DataManager.Instance.ResourceChance, DataManager.Instance.ResourceAmount);
         
     }

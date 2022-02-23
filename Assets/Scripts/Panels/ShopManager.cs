@@ -106,7 +106,7 @@ public class ShopManager : MonoBehaviour
     {
         if (DataManager.Instance.Clicks > DataManager.Instance.ResourcePrice)
         {
-            DataManager.Instance.Clicks -= ResourceAmountPrice;
+            DataManager.Instance.Clicks -= DataManager.Instance.ResourcePrice;
             DataManager.Instance.ResourcePrice = (ulong)Mathf.Ceil(DataManager.Instance.ResourcePrice * 2.5f);
             DataManager.Instance.ResourceAmount += 1;
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);

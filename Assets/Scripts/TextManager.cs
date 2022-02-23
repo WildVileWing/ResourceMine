@@ -5,10 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TextManager : MonoBehaviour
 {
-    // public variables
     public Text ClicksText;
     public GameObject ClickButton;
-    public Text[] ResourceMenuArray = new Text[10];
+    public Text[] ResourceMenuArray = new Text[16];
     public GameObject[] menuArray;
     public GameObject CraftingMenu;
     public GameObject InventoryMenu;
@@ -17,7 +16,7 @@ public class TextManager : MonoBehaviour
     public GameObject ResourceMenuButton;
     public GameObject InformationMenu;
     public Image[] IconEquipmentArray = new Image[10];
-    public Text[] PlayerStatusArray = new Text[7];
+    public Text[] PlayerStatusArray = new Text[11];
     public GameObject RarityButton;
     public Image RarityImage;
 
@@ -57,17 +56,22 @@ public class TextManager : MonoBehaviour
 
     public void UpdateInformationAboutResources() 
     { 
-        for(int i = 0; i < ResourceMenuArray.Length; i++)
+        for(int i = 0; i < DataManager.Instance.ResourceArray.GetLength(0); i++)
         {
-            ResourceMenuArray[i].text = $"{DataManager.Instance.ResourceArray[1,i]}"; 
+            for (int j = 0; j < DataManager.Instance.ResourceArray.GetLength(1); j++)
+            {
+                ResourceMenuArray[i].text = $"{DataManager.Instance.ResourceArray[i, j]}";
+            }
         }
+
+
     }
     public void UpdatePlayerStatusMenu()
     {
         avarageClick = DataManager.Instance.ClickAmount + DataManager.Instance.ClickAmount * ((DataManager.Instance.CriticalChance / 100) * StatusManager.Instance.playerStatus.CriticalMultiplier / 100);
-        for(int i = 0; i < IconEquipmentArray.Length; i++)
+        for (int i = 0; i < IconEquipmentArray.Length; i++)
         {
-            if(EquipmentManager.Instanse.CurrentEquipment[i] != null)
+            if (EquipmentManager.Instanse.CurrentEquipment[i] != null)
             {
                 IconEquipmentArray[i].sprite = EquipmentManager.Instanse.CurrentEquipment[i].Icon;
                 IconEquipmentArray[i].enabled = true;
@@ -86,6 +90,9 @@ public class TextManager : MonoBehaviour
         PlayerStatusArray[6].text = $"{DataManager.Instance.CriticalMultiplier}%";
         PlayerStatusArray[7].text = (DataManager.Instance.Strength + DataManager.Instance.Defense + DataManager.Instance.Dexterity +
             DataManager.Instance.Luck).ToString();
+        PlayerStatusArray[8].text = DataManager.Instance.ResourceTier.ToString();
+        PlayerStatusArray[9].text = DataManager.Instance.ResourceAmount.ToString();
+        PlayerStatusArray[10].text = $"{DataManager.Instance.ResourceChance}%";
     }
     public void OpenResourcesMenu()
     {

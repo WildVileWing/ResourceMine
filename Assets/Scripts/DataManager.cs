@@ -28,7 +28,7 @@ public class DataManager : MonoBehaviour
     public int CriticalMultiplier;
     public int ResourceChance;
     public int ResourceAmount;
-    public int ResourceTier;
+    public int ResourceTier = 1;
     public ulong ClickPrice;
     public ulong CriticalMultiplierPrice;
     public ulong CriticalChancePrice;
@@ -69,11 +69,15 @@ public class DataManager : MonoBehaviour
         Dexterity = data.dexterity;
         Luck = data.luck;
         ClickAmount = data.clickAmount < 1 ? 1 : data.clickAmount;
+
         CriticalChance = data.criticalChance;
         CriticalMultiplier = data.criticalMultiplier;
         ResourceChance = data.resourceChance;
         ResourceAmount = data.resourceAmount;
-        ResourceTier = data.resourceTier;
+
+        //ResourceTier = data.resourceTier;
+        ResourceTier = data.resourceTier < 1 ? 1 : data.resourceTier;
+
         ClickPrice = data.clickPrice;
         CriticalMultiplierPrice = data.criticalMultiplierPrice;
         CriticalChancePrice = data.criticalChancePrice;
@@ -96,7 +100,7 @@ public class DataManager : MonoBehaviour
     {
         Instance = this;
         DataPath = Application.persistentDataPath + "/Data.json";
-        ResourceArray = new int[3, 10];
+        ResourceArray = new int[4, 4];
         DataLoad();
     }
 
