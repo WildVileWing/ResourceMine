@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         int RandomTier = UnityEngine.Random.Range(0, tier+1);
         if (RandomResourceChance < chance) 
         {
-            int RandomResourceItem = UnityEngine.Random.Range(0, 10);
+            int RandomResourceItem = UnityEngine.Random.Range(0, 4);
             DataManager.Instance.ResourceArray[RandomTier, RandomResourceItem] += amount;
         }
     }
