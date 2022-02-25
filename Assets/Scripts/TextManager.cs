@@ -55,16 +55,18 @@ public class TextManager : MonoBehaviour
     }
 
     public void UpdateInformationAboutResources() 
-    { 
+    {
+        Debug.Log(DataManager.Instance.ResourceArray[1,1]);
+        Debug.Log(DataManager.Instance.ResourceArray.GetLength(0) + ", " + DataManager.Instance.ResourceArray.GetLength(1));
+        int temp = 0;
         for(int i = 0; i < DataManager.Instance.ResourceArray.GetLength(0); i++)
         {
             for (int j = 0; j < DataManager.Instance.ResourceArray.GetLength(1); j++)
             {
-                ResourceMenuArray[i].text = $"{DataManager.Instance.ResourceArray[i, j]}";
+                ResourceMenuArray[temp].text = $"{DataManager.Instance.ResourceArray[i, j]}";
+                temp++;
             }
         }
-
-
     }
     public void UpdatePlayerStatusMenu()
     {

@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
     public void RandomDropChance(int tier, int chance, int amount)
     {   
         int RandomResourceChance = UnityEngine.Random.Range(0, 101);
-        int RandomTier = UnityEngine.Random.Range(0, tier+1);
+        int RandomTier = UnityEngine.Random.Range(0, tier);
         if (RandomResourceChance < chance) 
         {
             int RandomResourceItem = UnityEngine.Random.Range(0, 4);
+            Debug.Log(RandomTier);
+            Debug.Log(RandomResourceItem);
+            Debug.Log(DataManager.Instance.ResourceArray);
             DataManager.Instance.ResourceArray[RandomTier, RandomResourceItem] += amount;
         }
     }

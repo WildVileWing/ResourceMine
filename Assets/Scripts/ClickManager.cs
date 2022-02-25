@@ -15,7 +15,7 @@ public class ClickManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-        int randomNumber = UnityEngine.Random.Range(0, 101);
+        int randomNumber = UnityEngine.Random.Range(0, 101); 
         if(randomNumber < DataManager.Instance.CriticalChance)
         {
             ClickPerClick = DataManager.Instance.ClickAmount + DataManager.Instance.ClickAmount * 

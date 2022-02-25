@@ -26,8 +26,8 @@ public class DataManager : MonoBehaviour
     public int ClickAmount = 1;
     public int CriticalChance;
     public int CriticalMultiplier;
-    public int ResourceChance;
-    public int ResourceAmount;
+    public int ResourceChance = 0;
+    public int ResourceAmount = 0;
     public int ResourceTier = 1;
     public ulong ClickPrice;
     public ulong CriticalMultiplierPrice;
@@ -35,8 +35,7 @@ public class DataManager : MonoBehaviour
     public ulong ResourceChancePrice;
     public ulong ResourcePrice;
     public ulong ResourceTierPrice;
-
-    public int[,] ResourceArray;
+    public int[,] ResourceArray = new int [4,4];
     private string DataPath;
 
     private void DataSave()
@@ -44,7 +43,7 @@ public class DataManager : MonoBehaviour
         Data data = new Data(Clicks, PlayerName, Level, MaxHealth, MaxMana, Health, Mana, BaseStrength, BaseDefense,
             BaseDexterity, BaseLuck, BaseCriticalChance, BaseCriticalMultiplier, Strength, Defense, Dexterity, Luck,
             CriticalChance, CriticalMultiplier, ResourceChance, ResourceAmount, ResourceTier, ClickAmount, ClickPrice, CriticalMultiplierPrice,
-            CriticalChancePrice, ResourceChancePrice, ResourcePrice, ResourceTierPrice);
+            CriticalChancePrice, ResourceChancePrice, ResourcePrice, ResourceTierPrice, ResourceArray);
         File.WriteAllText(DataPath, JsonUtility.ToJson(data));
     }
     
@@ -75,7 +74,6 @@ public class DataManager : MonoBehaviour
         ResourceChance = data.resourceChance;
         ResourceAmount = data.resourceAmount;
 
-        //ResourceTier = data.resourceTier;
         ResourceTier = data.resourceTier < 1 ? 1 : data.resourceTier;
 
         ClickPrice = data.clickPrice;
@@ -84,6 +82,12 @@ public class DataManager : MonoBehaviour
         ResourceChancePrice = data.resourceChancePrice;
         ResourcePrice = data.resourcePrice;
         ResourceTierPrice = data.resourceTierPrice;
+
+        Debug.Log(ResourceArray);
+        ResourceArray = data.resourceArray == null ? ResourceArray : data.resourceArray;
+        Debug.Log(data.resourceArray);
+
+
     }
 
     private void OnApplicationFocus(bool focus)
@@ -100,7 +104,7 @@ public class DataManager : MonoBehaviour
     {
         Instance = this;
         DataPath = Application.persistentDataPath + "/Data.json";
-        ResourceArray = new int[4, 4];
+        //ResourceArray = new int[4, 4];
         DataLoad();
     }
 
@@ -136,12 +140,13 @@ public class DataManager : MonoBehaviour
         public ulong resourceChancePrice;
         public ulong resourcePrice;
         public ulong resourceTierPrice;
+        public int[,] resourceArray = new int [4,4];
 
         public Data(ulong _clicks, string _playerName, int _level, int _maxHealth, int _maxMana, int _health, int _mana, int _baseStrength, int _baseDefense,
             int _baseDexterity, int _baseLuck, int _baseCriticalChance, int _baseCriticalMultiplier, int _strength, int _defense, int _dexterity, int _luck,
             int _criticalChance, int _criticalMultiplier, int _resourceChance, int _resourceAmount, int _resourceTier,
             int _clickAmount, ulong _clickPrice, ulong _criticalMultiplierPrice, ulong _criticalChancePrice, ulong _resourceChancePrice,
-            ulong _resourcePrice, ulong _resourceTierPrice)
+            ulong _resourcePrice, ulong _resourceTierPrice, int [,] _resourceArray)
         {
             clicks = _clicks;
             playerName = _playerName;
@@ -172,6 +177,7 @@ public class DataManager : MonoBehaviour
             resourceChancePrice = _resourceChancePrice;
             resourcePrice = _resourcePrice;
             resourceTierPrice = _resourceTierPrice;
+            resourceArray = _resourceArray;
         }
     }
 }
