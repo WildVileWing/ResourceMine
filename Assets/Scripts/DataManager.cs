@@ -35,7 +35,7 @@ public class DataManager : MonoBehaviour
     public ulong ResourceChancePrice;
     public ulong ResourcePrice;
     public ulong ResourceTierPrice;
-    public int[,] ResourceArray = new int [4,4];
+    public int[] ResourceArray = new int [16];
     private string DataPath;
 
     private void DataSave()
@@ -83,9 +83,8 @@ public class DataManager : MonoBehaviour
         ResourcePrice = data.resourcePrice;
         ResourceTierPrice = data.resourceTierPrice;
 
-        Debug.Log(ResourceArray);
         ResourceArray = data.resourceArray == null ? ResourceArray : data.resourceArray;
-        Debug.Log(data.resourceArray);
+
 
 
     }
@@ -103,8 +102,7 @@ public class DataManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        DataPath = Application.persistentDataPath + "/Data.json";
-        //ResourceArray = new int[4, 4];
+        DataPath = Path.Combine(Application.persistentDataPath + "/Data.json");
         DataLoad();
     }
 
@@ -140,13 +138,13 @@ public class DataManager : MonoBehaviour
         public ulong resourceChancePrice;
         public ulong resourcePrice;
         public ulong resourceTierPrice;
-        public int[,] resourceArray = new int [4,4];
+        public int[] resourceArray = new int [16];
 
         public Data(ulong _clicks, string _playerName, int _level, int _maxHealth, int _maxMana, int _health, int _mana, int _baseStrength, int _baseDefense,
             int _baseDexterity, int _baseLuck, int _baseCriticalChance, int _baseCriticalMultiplier, int _strength, int _defense, int _dexterity, int _luck,
             int _criticalChance, int _criticalMultiplier, int _resourceChance, int _resourceAmount, int _resourceTier,
             int _clickAmount, ulong _clickPrice, ulong _criticalMultiplierPrice, ulong _criticalChancePrice, ulong _resourceChancePrice,
-            ulong _resourcePrice, ulong _resourceTierPrice, int [,] _resourceArray)
+            ulong _resourcePrice, ulong _resourceTierPrice, int [] _resourceArray)
         {
             clicks = _clicks;
             playerName = _playerName;
