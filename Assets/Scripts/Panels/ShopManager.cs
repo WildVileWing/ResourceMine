@@ -118,9 +118,14 @@ public class ShopManager : MonoBehaviour
     {
         if (DataManager.Instance.Clicks > DataManager.Instance.ResourceTierPrice)
         {
+            if(DataManager.Instance.ResourceTier > 3)
+            {
+                Debug.Log("Higher than 3");
+                return;
+            }
             DataManager.Instance.Clicks -= DataManager.Instance.ResourceTierPrice;
             DataManager.Instance.ResourceTierPrice = (ulong)(DataManager.Instance.ResourceTierPrice * 10);
-            DataManager.Instance.ResourceAmount += 1;
+            DataManager.Instance.ResourceTier += 1;
             TextManager.Instance.UpdateInformation(DataManager.Instance.Clicks);
             ListOfButtonsPriceText[5].text = DataManager.Instance.ResourceTierPrice + "$";
         }

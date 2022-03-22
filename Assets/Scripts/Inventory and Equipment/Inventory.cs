@@ -12,10 +12,8 @@ public enum ItemAction
 
 public class Inventory : MonoBehaviour
 {
-    
     #region Singleton
     public static Inventory Instance;
-
     private void Awake()
     {
         Instance = this;
@@ -45,7 +43,7 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            if (ItemSearch(item) != null)
+            if (ItemSearch(item) != null && item.StackAmount < 20)
             {
                 item.StackAmount++;
             }
@@ -57,7 +55,6 @@ public class Inventory : MonoBehaviour
         if (onItemChangedCallBack != null)
         {
             onItemChangedCallBack.Invoke();
-            Debug.Log("f");
         }
     }
 

@@ -30,6 +30,15 @@ public class Item : ScriptableObject
     public Sprite Icon;
     public int StackAmount;
     public ItemRarity Rarity;
+
+    /*public Item(ItemSO _itemSO)
+    {
+        Name = _itemSO.Name;
+        Icon = _itemSO.Icon;
+        Rarity = _itemSO.Rarity;
+    }
+    */
+
     public virtual void Use()
     {
         Debug.Log(StackAmount);

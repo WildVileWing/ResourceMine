@@ -6,7 +6,7 @@ using System.IO;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
-    public ulong Clicks = 1000;
+    public ulong Clicks;
     public string PlayerName;
     public int Level; 
     public int MaxHealth;
@@ -45,6 +45,7 @@ public class DataManager : MonoBehaviour
             CriticalChance, CriticalMultiplier, ResourceChance, ResourceAmount, ResourceTier, ClickAmount, ClickPrice, CriticalMultiplierPrice,
             CriticalChancePrice, ResourceChancePrice, ResourcePrice, ResourceTierPrice, ResourceArray);
         File.WriteAllText(DataPath, JsonUtility.ToJson(data));
+    
     }
     
     private void DataLoad()
@@ -84,9 +85,6 @@ public class DataManager : MonoBehaviour
         ResourceTierPrice = data.resourceTierPrice;
 
         ResourceArray = data.resourceArray == null ? ResourceArray : data.resourceArray;
-
-
-
     }
 
     private void OnApplicationFocus(bool focus)
@@ -103,6 +101,10 @@ public class DataManager : MonoBehaviour
     {
         Instance = this;
         DataPath = Path.Combine(Application.persistentDataPath + "/Data.json");
+        if (!File.Exists(DataPath)) {
+            DataSave();
+            return;
+        }
         DataLoad();
     }
 

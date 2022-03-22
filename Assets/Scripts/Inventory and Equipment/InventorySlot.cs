@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class InventorySlot : MonoBehaviour
 {
     public Item item;
-    public Text ItemAmount;
+    public Text ItemAmountText;
+    public int ItemAmount;
     public Image Icon;
     public Button InformationButton;
     public string[] InformationArray = new string[10];
@@ -21,13 +22,9 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(Item newItem)
     {
         item = newItem;
-        if(item.GetType().BaseType.Name == "Equipment" )    //     || item.GetType().BaseType.Name == "Parts"
+        if(item.GetType().BaseType.Name != "Equipment" )
         {
-            ItemAmount.text = null;
-        }
-        else
-        {
-            ItemAmount.text = item.StackAmount.ToString();
+            ItemAmountText.text = item.StackAmount.ToString();
         }
         Icon.sprite = item.Icon;
         Icon.enabled = true;
@@ -37,7 +34,7 @@ public class InventorySlot : MonoBehaviour
     public void ClearSlot()
     {
         item = null;
-        ItemAmount.text = null;
+        ItemAmountText.text = null;
         Icon.sprite = null;
         Icon.enabled = false;
         InformationButton.interactable = false;
